@@ -40,6 +40,7 @@ RUN set -ex \
     ' \
     && apt-get update -yqq \
     && apt-get upgrade -yqq \
+    && apt install git-all \
     && apt-get install -yqq --no-install-recommends \
         $buildDeps \
         freetds-bin \
