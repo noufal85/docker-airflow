@@ -27,6 +27,8 @@ ENV LC_MESSAGES en_US.UTF-8
 
 # Disable noisy "Handling signal" log messages:
 # ENV GUNICORN_CMD_ARGS --log-level WARNING
+#COPY nedappa_data_tools-0.1.0-py2.py3-none-any.whl /nedappa_data_tools-0.1.0-py2.py3-none-any.whl
+##RUN pip install nedappa_data_tools-0.1.0-py2.py3-none-any.whl
 
 RUN set -ex \
     && buildDeps=' \
@@ -76,6 +78,9 @@ RUN set -ex \
 
 COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
+
+COPY data_tools-0.1.0-py2.py3-none-any.whl /data_tools-0.1.0-py2.py3-none-any.whl
+RUN pip install data_tools-0.1.0-py2.py3-none-any.whl
 
 RUN chown -R airflow: ${AIRFLOW_USER_HOME}
 
