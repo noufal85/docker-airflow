@@ -88,6 +88,7 @@ COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 
 COPY data_tools-0.1.0-py2.py3-none-any.whl /data_tools-0.1.0-py2.py3-none-any.whl
 RUN pip3 install data_tools-0.1.0-py2.py3-none-any.whl
+RUN pip3 install typing_extensions
 
 RUN chown -R airflow: ${AIRFLOW_USER_HOME}
 
