@@ -86,8 +86,12 @@ RUN set -ex \
 COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 
-COPY data_tools-0.2.0-py2.py3-none-any.whl /data_tools-0.2.0-py2.py3-none-any.whl
-RUN pip3 install data_tools-0.2.0-py2.py3-none-any.whl
+COPY data_tools-0.2.1-py2.py3-none-any.whl /data_tools-0.2.1-py2.py3-none-any.whl
+RUN pip3 install data_tools-0.2.1-py2.py3-none-any.whl
+#
+COPY yagmail-0.11.500-py2.py3-none-any.whl /yagmail-0.11.500-py2.py3-none-any.whl
+RUN pip3 install yagmail-0.11.500-py2.py3-none-any.whl
+#
 RUN pip3 install typing_extensions
 RUN pip3 install keyrings.alt
 RUN pip3 install keyring
