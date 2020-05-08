@@ -22,7 +22,7 @@ default_args = {
     'retry_delay': timedelta(seconds=5)
 }
 
-with DAG('store_dag',default_args=default_args,schedule_interval='@daily', template_searchpath=['/usr/local/airflow/sql_files'], catchup=False) as dag:
+with DAG('store_dag',default_args=default_args,schedule_interval='@hourly', template_searchpath=['/usr/local/airflow/sql_files'], catchup=False) as dag:
 
     #t1=BashOperator(task_id='check_file_exists', bash_command='shasum ~/store_files_airflow/raw_store_transactions.csv', retries=2, retry_delay=timedelta(seconds=15))
 
