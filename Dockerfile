@@ -68,7 +68,7 @@ RUN set -ex \
     && pip3 install ndg-httpsclient \
     && pip3 install pyasn1 \
     ##&& pip install secretstorage \
-    && pip3 install keyring\
+    #&& pip3 install keyring\
     && pip3 install apache-airflow[crypto,celery,postgres,hive,jdbc,mysql,ssh${AIRFLOW_DEPS:+,}${AIRFLOW_DEPS}]==${AIRFLOW_VERSION} \
     && pip3 install 'redis==3.2' \
     && if [ -n "${PYTHON_DEPS}" ]; then pip install ${PYTHON_DEPS}; fi \
@@ -89,6 +89,7 @@ COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 COPY data_tools-0.1.0-py2.py3-none-any.whl /data_tools-0.1.0-py2.py3-none-any.whl
 RUN pip3 install data_tools-0.1.0-py2.py3-none-any.whl
 RUN pip3 install typing_extensions
+RUN pip3 install keyrings.alt
 
 RUN chown -R airflow: ${AIRFLOW_USER_HOME}
 
