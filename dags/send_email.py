@@ -27,6 +27,10 @@ with DAG('store_dag',default_args=default_args,schedule_interval='@daily', templ
 
     #t1=BashOperator(task_id='check_file_exists', bash_command='shasum ~/store_files_airflow/raw_store_transactions.csv', retries=2, retry_delay=timedelta(seconds=15))
 
+    t1 = PythonOperator(task_id='email', python_callable=send_mail)
+
     t2 = PythonOperator(task_id='email', python_callable=send_mail)
+
+    t1>>t2
 
    
