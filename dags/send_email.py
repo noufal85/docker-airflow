@@ -5,7 +5,14 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.operators.mysql_operator import MySqlOperator
 from airflow.operators.email_operator import EmailOperator
 
-from .emailFn import send_mail
+from data_tools.api.email.gmail import send_gmail
+
+def send_mail():
+    receiver = 'noufal85@gmail.com'
+    subject = 'testing DAG'
+    body ="ignore"
+    smtp = "edappa1985@gmail.com"
+    send_gmail(receiver,subject,body,smtp,attachment=None)
 
 yesterday_date = datetime.strftime(datetime.now() - timedelta(1), '%Y-%m-%d')
 
