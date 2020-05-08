@@ -29,7 +29,7 @@ with DAG('store_dag',default_args=default_args,schedule_interval='@daily', templ
 
     t1 = PythonOperator(task_id='email', python_callable=send_mail)
 
-    t2 = PythonOperator(task_id='email', python_callable=send_mail)
+    t2 = PythonOperator(task_id='email2', python_callable=send_mail)
 
     t1>>t2
 
